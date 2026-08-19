@@ -2,15 +2,15 @@
 
 Repositorio de ejemplos prácticos del curso **Lenguaje de Programación III**.
 
-Los ejemplos están desarrollados principalmente con **Java 21, Maven y Spring Boot** y se encuentran organizados de manera progresiva por unidades.
+Los ejemplos están desarrollados con **Java 21, Maven y Spring Boot** y se encuentran organizados por unidades y en secuencia progresiva.
 
-El propósito del repositorio es complementar los contenidos del curso mediante ejemplos ejecutables y actualizados que permitan comprender cómo se aplican los conceptos en proyectos reales de desarrollo de software.
+El objetivo es complementar el curso con ejemplos ejecutables, actuales y documentados paso a paso.
 
 ---
 
 ## Tecnologías principales
 
-Durante el curso se trabajará progresivamente con tecnologías como:
+Durante el curso se utilizan progresivamente:
 
 - Java 21
 - Maven
@@ -22,17 +22,17 @@ Durante el curso se trabajará progresivamente con tecnologías como:
 - MockMvc
 - Spring Data JPA
 - Hibernate
-- Bases de datos relacionales
-- Consumo de APIs externas
+- H2
+- MySQL
+- RestClient
 - Spring Boot Actuator
-- Métricas y observabilidad
-- k6 para pruebas de rendimiento
-
-No todas las tecnologías se utilizan desde el inicio. Cada una se incorpora cuando el tema de la unidad lo requiere.
+- Micrometer
+- Prometheus
+- k6
 
 ---
 
-# Organización del repositorio
+## Organización del repositorio
 
 ```text
 Curso-Lenguaje-de-Programacion-3/
@@ -47,105 +47,84 @@ Curso-Lenguaje-de-Programacion-3/
 │
 ├── unidad2/
 │   ├── README.md
-│   └── pom.xml
+│   ├── pom.xml
+│   └── src/
 │
 └── unidad3/
     ├── README.md
-    └── pom.xml
+    ├── pom.xml
+    ├── src/
+    └── k6/
 ```
 
-Cada unidad contiene su propio archivo `README.md` con la explicación de los ejemplos, conceptos trabajados, comandos de ejecución y pruebas.
+Cada unidad contiene:
+
+- un `README.md` general como índice;
+- ejemplos numerados;
+- un `README.md` dentro de cada ejemplo con la explicación correspondiente.
 
 ---
 
-# Unidad 1 - Estructura de una API Web
+## Unidades
 
-En esta unidad se estudian los fundamentos de construcción y prueba de una API REST.
+### [Unidad 1 - Estructura de una API Web](unidad1/)
 
-Se trabajan progresivamente conceptos como:
+Incluye ejemplos sobre:
 
-- Spring Boot.
-- API REST.
-- Métodos HTTP.
-- Endpoints.
-- `GET`.
-- `POST`.
-- `PathVariable`.
-- `RequestParam`.
-- `RequestBody`.
-- JSON.
-- DTO.
-- códigos de estado HTTP.
-- `ResponseEntity`.
-- validación de datos.
-- manejo de excepciones.
-- inyección de dependencias.
-- pruebas unitarias.
-- JUnit 5.
-- Mockito.
+- Spring Boot;
+- API REST;
+- `GET` y `POST`;
+- `PathVariable`;
+- `RequestParam`;
+- `RequestBody`;
+- DTO;
+- códigos HTTP;
+- validación;
+- manejo de errores;
+- inyección de dependencias;
+- JUnit 5;
+- Mockito;
 - MockMvc.
 
-Los ejemplos de esta unidad se encuentran documentados detalladamente en:
-
-```text
-unidad1/README.md
-```
-
 ---
 
-# Unidad 2 - Comunicación con servicios externos
+### [Unidad 2 - Comunicación con servicios externos](unidad2/)
 
-Esta unidad estará orientada principalmente al manejo de persistencia y comunicación con otros servicios.
+Incluye ejemplos sobre:
 
-Se abordarán temas como:
-
-- persistencia de datos;
-- bases de datos relacionales;
-- ORM;
+- persistencia;
 - JPA;
 - Hibernate;
 - Spring Data JPA;
-- operaciones CRUD;
+- CRUD;
+- consultas derivadas;
 - relaciones entre entidades;
 - consumo de APIs externas;
-- manejo de respuestas de servicios externos.
-
-Los ejemplos se incorporarán progresivamente en:
-
-```text
-unidad2/
-```
+- H2;
+- MySQL.
 
 ---
 
-# Unidad 3 - Observabilidad y pruebas de rendimiento
+### [Unidad 3 - Observabilidad y pruebas de rendimiento](unidad3/)
 
-Esta unidad estará orientada al análisis del comportamiento de una aplicación una vez se encuentra en funcionamiento.
+Incluye ejemplos sobre:
 
-Se trabajarán temas como:
-
-- logs;
-- métricas;
-- health checks;
 - Spring Boot Actuator;
-- observabilidad;
-- monitoreo;
+- health checks;
+- métricas;
+- métricas personalizadas;
+- logging;
+- trazabilidad;
+- Prometheus;
 - pruebas de carga;
-- pruebas de estrés;
-- análisis de rendimiento;
-- k6.
-
-Los ejemplos estarán disponibles en:
-
-```text
-unidad3/
-```
+- thresholds;
+- pruebas de estrés con k6.
 
 ---
 
-# Requisitos
+## Requisitos
 
-Para trabajar con los ejemplos iniciales se recomienda tener instalado:
+Para los ejemplos principales se recomienda:
 
 ```text
 Java 21
@@ -153,51 +132,46 @@ Maven 3.6.3 o superior
 Git
 ```
 
-Puede verificar Java ejecutando:
+Para algunos ejemplos también se utilizan:
+
+```text
+MySQL 8 o superior
+k6
+```
+
+Puede verificar las versiones instaladas con:
 
 ```bash
 java -version
-```
-
-Puede verificar Maven ejecutando:
-
-```bash
 mvn -version
-```
-
-Puede verificar Git ejecutando:
-
-```bash
 git --version
+mysql --version
+k6 version
 ```
 
 ---
 
-# Clonar el repositorio
+## Ejecutar una unidad
 
-Cuando el repositorio se encuentre publicado en GitHub podrá clonarse mediante:
-
-```bash
-git clone URL_DEL_REPOSITORIO
-```
-
-Luego se debe ingresar a la carpeta:
-
-```bash
-cd Curso-Lenguaje-de-Programacion-3
-```
-
----
-
-# Ejecutar una unidad
-
-Por ejemplo, para ejecutar la aplicación correspondiente a la Unidad 1:
+### Unidad 1
 
 ```bash
 mvn -pl unidad1 spring-boot:run
 ```
 
-Para detener el servidor:
+### Unidad 2
+
+```bash
+mvn -pl unidad2 spring-boot:run
+```
+
+### Unidad 3
+
+```bash
+mvn -pl unidad3 spring-boot:run
+```
+
+Para detener Spring Boot:
 
 ```text
 Ctrl + C
@@ -205,56 +179,74 @@ Ctrl + C
 
 ---
 
-# Ejecutar las pruebas
+## Ejecutar todas las pruebas
 
-Para ejecutar las pruebas automatizadas de la Unidad 1:
+Desde la raíz del repositorio:
 
 ```bash
-mvn -pl unidad1 test
+mvn test
 ```
 
-Maven mostrará al final el número de pruebas ejecutadas y si se presentaron errores o fallos.
+Este comando compila las tres unidades y ejecuta las pruebas automatizadas disponibles.
 
 ---
 
-# ¿Cómo estudiar los ejemplos?
+## Forma recomendada de estudio
 
-Los ejemplos se encuentran numerados:
+Los ejemplos están numerados:
 
 ```text
 U1_01
 U1_02
 U1_03
 ...
+
+U2_01
+U2_02
+...
+
+U3_01
+U3_02
+...
 ```
 
-La numeración indica el orden recomendado de estudio.
+Se recomienda seguir el orden numérico dentro de cada unidad.
 
-No se recomienda comenzar directamente por los últimos ejemplos, ya que varios conceptos dependen de los anteriores.
+Cada ejemplo contiene su propia documentación con:
 
-Dentro de cada unidad encontrará un `README.md` con explicaciones adicionales sobre:
-
-- qué hace el código;
-- qué concepto se está trabajando;
-- qué hacen las anotaciones utilizadas;
-- cómo ejecutar el ejemplo;
-- cómo probarlo;
-- cuál debe ser el resultado esperado.
+- objetivo;
+- explicación del código;
+- conceptos principales;
+- forma de ejecución;
+- forma de prueba;
+- resultado esperado;
+- flujo del ejemplo.
 
 ---
 
-# Enfoque del repositorio
+## Pruebas de APIs
+
+Los endpoints pueden probarse mediante:
+
+- herramientas gráficas como Postman o Bruno;
+- `curl` desde la terminal.
+
+Los comandos específicos se encuentran documentados dentro de cada ejemplo.
+
+---
+
+## Enfoque del repositorio
 
 Este repositorio busca que los ejemplos sean:
 
 - pequeños;
 - progresivos;
 - ejecutables;
-- fáciles de consultar;
+- fáciles de localizar;
 - suficientemente explicados;
 - cercanos a prácticas actuales de desarrollo.
 
-Los ejemplos no pretenden reemplazar el material académico del curso, sino servir como apoyo práctico para comprender y experimentar con los conceptos estudiados.
+Los ejemplos complementan el material académico del curso y no lo reemplazan.
 
 ---
 
